@@ -154,6 +154,10 @@ gulp.task('uglify-js', function() {
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(gulp.dest(PATHS.scripts.dist))
+    
+    if(SETTINGS.config.warnings.successful){
+        terminal_notifier('uglify', '✅ Uglify - Js', '', 'Compiled');
+    }
 });
 
 /*GULP SERVE */
