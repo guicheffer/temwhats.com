@@ -1,0 +1,204 @@
+/* =============================================================================
+   Functions [mixins]
+   =========================================================================== */
+		
+/* Mixing to use pixel converted in rem separate mixin, so it can be used anywhere else [REMIFY] */
+/* Example: remify */
+remify(value)
+	u = unit(value)
+	
+	//return unit(value, u) //fix for now
+
+	if (u is 'px') {
+		return unit(value/16, 'rem')
+	} else {
+		return unit(value, u)
+	}
+
+/* Adjust the way which browsers will understand the performance and style adapted [VENDOR] */
+vendor(property, value)
+	-webkit-{property} value
+	-moz-osx-{property} value
+	-moz-{property} value
+	-ms-{property} value
+	-o-{property} value
+	{property} value
+ 
+animation()
+	vendor('animation', arguments)
+
+border-radius()
+	vendor('border-radius', arguments)
+
+border-top-radius() 
+	vendor('border-top-left-radius', arguments)
+	vendor('border-top-right-radius', arguments)
+
+box-sizing()
+	vendor('box-sizing', arguments)
+	
+background-border-cut(real_color, size = medium)
+	deg = 34deg
+	modified_deg = 57deg
+	
+	normal_px_start = remify(14px)
+	normal_px_start_after = remify(15px)
+	
+	super_small_cent_end = 68%
+	super_small_cent_even_end = 68.2%
+	small_cent_end = 78%
+	small_cent_even_end = 78.2%
+	medium_cent_end = 88%
+	medium_cent_even_end = 88.7%
+	medium_large_cent_end = 92%
+	medium_large_cent_even_end = 92.7%
+	large_cent_end = 98%
+	large_cent_even_end = 98.4%
+	
+	if (size is 'super-small') {
+		normal_px_start = remify(4px)
+		normal_px_start_after = remify(5px)
+		size_end_cent = medium_cent_end
+		size_even_end_cent = medium_cent_even_end
+	}else if (size is 'small') {
+		size_end_cent = small_cent_end
+		size_even_end_cent = small_cent_even_end
+	}else if (size is 'medium') {
+		size_end_cent = medium_cent_end
+		size_even_end_cent = medium_cent_even_end
+	}else if (size is 'medium-large') {
+		size_end_cent = medium_large_cent_end
+		size_even_end_cent = medium_large_cent_even_end
+	}else if (size is 'large') {
+		size_end_cent = large_cent_end
+		size_even_end_cent = large_cent_even_end
+	}
+
+	background real_color
+	background linear-gradient(deg, transparent 0%, transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+	background -moz-linear-gradient(deg, transparent 0%,  transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+	background -webkit-linear-gradient(modified_deg, transparent 0%, transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+	background -o-linear-gradient(deg, transparent 0%, transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+	background -ms-linear-gradient(deg, transparent 0%, transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+	background linear-gradient(deg, transparent 0%, transparent normal_px_start, real_color normal_px_start_after, real_color size_end_cent, transparent size_even_end_cent)
+			
+mount-btn-type-style(type = error)
+
+	if (type is 'default') {
+		type_color = $border-text-color-default
+		url_top_border = $url-border-input-default-top
+		url_bottom_border = $url-border-input-default-bottom
+		background_color_focus = $focus-input-text-color-default
+	}else if (type is 'error') {
+		type_color = $border-text-color-error
+		url_top_border = $url-border-input-error-top
+		url_bottom_border = $url-border-input-error-bottom
+		background_color_focus = $focus-input-text-color-error
+	}else if (type is 'warning') {
+		type_color = $border-text-color-warning
+		url_top_border = $url-border-input-warning-top
+		url_bottom_border = $url-border-input-warning-bottom
+		background_color_focus = $focus-input-text-color-warning
+	}else if (type is 'success') {
+		type_color = $border-text-color-success
+		url_top_border = $url-border-input-success-top
+		url_bottom_border = $url-border-input-success-bottom
+		background_color_focus = $focus-input-text-color-success
+	}
+	
+	input
+		border remify(1px) solid type_color
+		&:focus
+			outline 0
+			background background_color_focus
+	&:before
+		if (type is 'error') {
+			bottom remify(0px)
+		}
+		background url(url_bottom_border)
+	&:after
+		if (type is 'error') {
+			top remify(-2.5px)
+		}
+		background url(url_top_border)
+
+placeholder(color = $placeholder-page-form-color-default, weight, style = normal)
+	::-webkit-input-placeholder
+		color color
+		font-weight weight
+		font-style style
+
+	:-moz-placeholder
+		color color
+		font-weight weight
+		font-style style
+
+	::-moz-placeholder
+		color color
+		font-weight weight
+		font-style style
+
+	:-ms-input-placeholder
+		color color
+		font-weight weight
+		font-style style
+
+default-linear-gradient(start_color, end_color, start = left top, end = left bottom)
+	mozstart = top if start = left top
+	
+	background start_color
+	background -moz-linear-gradient(mozstart, start_color 0%, end_color 100%)
+	background -webkit-gradient(linear, start, end, color-stop(0%, start_color), color-stop(100%, end_color))
+	-webkit-background-origin padding-box
+ 
+background-clip()
+	vendor('background-clip', arguments)
+ 
+box-shadow() 
+	-moz-box-shadow arguments
+	-webkit-box-shadow arguments
+	box-shadow arguments
+ 
+box(orient, pack, align) 
+	display -webkit-box
+	display -moz-box
+	display box
+	vendor('box-orient', orient)
+	vendor('box-pack', pack)
+	vendor('box-align', align)
+	vendor('box-lines', multiple)
+
+box_flex()
+	vendor('box-flex', arguments)
+ 
+text-fill-color()
+	vendor('text-fill-color', arguments)
+ 
+transition()
+	vendor('transition', arguments)
+ 
+font-smoothing()
+	vendor('font-smoothing', arguments)
+ 
+transform()
+	vendor('transform', arguments)
+ 
+filter()
+	vendor('filter', arguments)
+ 
+user-select()
+	vendor('user-select', arguments)
+
+absolute-center(element_width, pcent = no, dad_element = $default-height-window-container)
+	if (pcent == yes) {
+		left ( (100 - element_width) / 2 )%
+	}else{
+		left 50-( ( element_width * 100 ) / dad_element )%
+	}
+
+generate-grid(increment, start, end)
+	total = start
+	for n, x in 0..((end - start) / increment)
+		.col-{x+1}
+			width total
+		total = total + increment

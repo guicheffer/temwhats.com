@@ -21,5 +21,8 @@ trim_trailing_whitespace = false
 [{*.styl,*.css}]
 indent_size = 2
 
+[*.js]
+indent_size = 4
+
 [package.json]
 indent_size = 2

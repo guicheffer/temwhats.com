@@ -148,27 +148,22 @@ gulp.task('stylus', function() {
     }
 });
 
-
-/*IMAGE MIN */
-gulp.task('image-min', function() {
-    gulp.src(path.join(PATHS.images.src, '**/*.*')).pipe(imagemin({
-        use: [
-            pngquant({
-                quality: SETTINGS.config.images.quality
-            }), jpgtran({
-                progressive: SETTINGS.config.images.progressive
-            })
-        ]
-    })).pipe(gulp.dest(PATHS.images.dist));
+/*UGLIFY-JS*/
+gulp.task('uglify-js', function() {
+    gulp.src(path.join(PATHS.scripts.src, '**/*.js'))
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(gulp.dest(PATHS.scripts.dist))
 });
 
 /*GULP SERVE */
-gulp.task('serve', ['webserver', 'stylus'], function() {
+gulp.task('serve', ['webserver', 'stylus', 'uglify-js'], function() {
     gulp.watch(path.join(PATHS.styles.src, '**/*.styl'), ['stylus']);
+    gulp.watch(path.join(PATHS.scripts.src, '**/*.js'), ['uglify-js']);
 });
 
 
 /*GULP AVAILABLE TASKS */
-gulp.task('build', ['stylus']);
+gulp.task('build', ['stylus', 'uglify-js']);
 gulp.task('run', ['serve']);
 gulp.task('default', ['run']);
