@@ -13,6 +13,8 @@
 body
   height 100vh
   position relative
+  margin 0
+  padding 0
 
   &.whats-on
     background linear-gradient(to top, $startGreen, $endGreen)
@@ -39,21 +41,43 @@ body
   &.showing
     display block
 
+.download-google-play
+  background url(/static/images/google-play.png)
+  text-indent -9999px !important
+  font-size 0
+  width remify(160px)
+  height remify(50px)
+  display block
+  position absolute
+  top 0
+  right 0
+  margin remify(10px)
+  background-size 100%
+
 .twitter-timeline
   left 50%
   bottom 10%
+  width 50%
   position absolute
   transform translateX(-50%)
-  height remify(300px)
+  height remify(370px)
   display none
 
   iframe
     position relative !important
     height 100% !important
+    width 100% !important
   
   &.showing
     display block
 
 @media only screen and (max-width: 768px)
+  body
+    min-height 1000px
+    height 100%
   .twitter-timeline
+    position relative
+    bottom 0
     width 100%
+    height remify(500px)
+    top remify(280px)
