@@ -6,12 +6,12 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     run = require('gulp-run'),
     es = require('event-stream'),
-    webserver = require('gulp-webserver');
+    connect = require('gulp-connect');
 
 /*GENERAL CONFIGS */
 CONFIGS = {
     context: 'prod',
-    app: 'temwhats.com.br',
+    app: 'temwhats.com',
     version: '1.0',
     warnings: {
         successful: true
@@ -92,9 +92,6 @@ PATHS = {
     sprites: {
         src: path.join(base.src, SETTINGS.path.images, SETTINGS.path.sprites, '*.*'),
         src: path.join(base.src, SETTINGS.path.images, SETTINGS.path.sprites, SETTINGS.path.dist)
-    },
-    tests: {
-        src: path.join(SETTINGS.path.tests)
     }
 };
 
@@ -112,12 +109,10 @@ if (util.env.dev) {
 
 /*WEBSERVER*/
 gulp.task('webserver', function() {
-  gulp.src('app')
-    .pipe(webserver({
-      livereload: true,
-      directoryListing: true,
-      open: true
-    }));
+  connect.server({
+    root: '.',
+    livereload: true
+  });
 });
 
 /*FUNCTIONS*/
