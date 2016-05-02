@@ -22,7 +22,7 @@ body
 .content-status
   width remify(350px)
   left 50%
-  top 50%
+  top 30%
   transform translate(-50%, -50%)
   text-align center
   position absolute
@@ -41,11 +41,19 @@ body
 
 .twitter-timeline
   left 50%
-  bottom 0
+  bottom 10%
   position absolute
   transform translateX(-50%)
   height remify(300px)
+  display none
 
   iframe
     position relative !important
-    height 100%
+    height 100% !important
+  
+  &.showing
+    display block
+
+@media only screen and (max-width: 768px)
+  .twitter-timeline
+    width 100%
