@@ -13,7 +13,7 @@
 body
   height 100vh
   position relative
-  
+
   &.whats-on
     background linear-gradient(to top, $startGreen, $endGreen)
   &.whats-off
@@ -27,7 +27,7 @@ body
   text-align center
   position absolute
   display none
-  
+
   .caption
     text-transform uppercase
     font-size remify(35px)
@@ -38,3 +38,14 @@ body
     width remify(250px)
   &.showing
     display block
+
+.twitter-timeline
+  left 50%
+  bottom 0
+  position absolute
+  transform translateX(-50%)
+  height remify(300px)
+
+  iframe
+    position relative !important
+    height 100%
