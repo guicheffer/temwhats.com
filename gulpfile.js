@@ -111,6 +111,7 @@ if (util.env.dev) {
 gulp.task('webserver', function() {
   connect.server({
     root: '.',
+    port: 3000,
     livereload: true
   });
 });

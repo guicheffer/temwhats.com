@@ -12,11 +12,11 @@ temwhats.config = {
         _twitter_whats_off = document.getElementsByClassName('twitter-whats-off')[0],
         _container_whats_off = document.getElementsByClassName('content-whats-off')[0];
         
-        if (this.status_whats === 'on') {
+        if (this.status_whats.toLowerCase() === 'on') {
             container_body.className = container_body.className + ' whats-on';
             _container_whats_on.className = _container_whats_on.className + ' showing';
             _twitter_whats_on.className = _twitter_whats_on.className + ' showing';
-        } else if (this.status_whats === 'off') {
+        } else if (this.status_whats.toLowerCase() === 'off') {
             container_body.className = container_body.className + ' whats-off';
             _container_whats_off.className = _container_whats_off.className + ' showing';
             _twitter_whats_off.className = _twitter_whats_off.className + ' showing';

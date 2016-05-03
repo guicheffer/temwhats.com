@@ -1,9 +1,9 @@
-# temwhats.com.br
-Tem whats ? Sim | Não
+# temwhats.com
+Tem whats? Sim | Não
 
 ## Contributing
 
-- Fork the repository [https://github.com/guicheffer/temwhats.com.br/fork](https://github.com/guicheffer/temwhats.com.br/fork)
+- Fork the repository [https://github.com/guicheffer/temwhats.com/fork](https://github.com/guicheffer/temwhats.com/fork)
 
 ## License ([MIT License](http://choosealicense.com/licenses/mit/))
 
