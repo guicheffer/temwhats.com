@@ -6,6 +6,17 @@
 
 @import 'includes/mixins'
 
+/*keyframes*/
+@keyframes turning {
+  0% {
+    transform rotateZ(0)
+  }
+  100% {
+    transform rotateZ(360deg)
+  }
+}
+
+/*general*/
 *
   font-family 'Helvetica', 'Verdana', 'Foda-se'
   box-sizing border-box
@@ -21,7 +32,7 @@ body
   &.whats-off
     background linear-gradient(to top, $startRed, $endRed)
 
-
+/*base css*/
 .download-google-play
   background url(/static/images/google-play.png)
   text-indent -9999px !important
@@ -60,11 +71,18 @@ body
     padding-bottom remify(30px)
   .img
     width remify(250px)
+    &.turning1
+      animation turning 1s linear infinite
+    &.turning2
+      animation turning 0.5s linear infinite
+    &.turning3
+      animation turning 0.2s linear infinite
+  
   &.showing
     display block
 
 .share-facebook
-  margin-top remify(25px)
+  margin-top remify(40px)
   width remify(98px)
 
 @media only screen and (max-width: 768px)
