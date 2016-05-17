@@ -2,6 +2,8 @@
 Web page which gives you an idiot status of WhatsApp in Brazil [Tem Whats?](http://temwhats.com/)
 
 ## Reputation
+<a href="http://ultimanoticia.com.br/materia/28107/site-avisa-quando-whatsapp-estaacute-fora-do-ar-ou-natildeo/" target="_blank">Última notícia: http://ultimanoticia.com.br/materia/28107/site-avisa-quando-whatsapp-estaacute-fora-do-ar-ou-natildeo/</a>
+
 <a href="http://hashtag.blogfolha.uol.com.br/2016/05/03/site-avisa-quando-whatsapp-esta-fora-do-ar-ou-nao/" target="_blank">Hashtag *blogfolha* review: http://hashtag.blogfolha.uol.com.br/2016/05/03/site-avisa-quando-whatsapp-esta-fora-do-ar-ou-nao/</a>
 
 ![image](https://cloud.githubusercontent.com/assets/5280832/15032355/5ba48612-1236-11e6-8d9e-275323441504.png)
