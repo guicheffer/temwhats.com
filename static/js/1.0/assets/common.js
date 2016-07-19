@@ -1,18 +1,18 @@
 var temwhats = temwhats || {};
 
-var status = 'on'; //`on` or `off`
+var status = 'off'; //`on` or `off`
 
 temwhats.config = {
     status_whats: status,
-    
+
     init: function(){
         var _body = document.getElementsByTagName('body')[0],
         _obj_download_gplay = document.getElementsByClassName('download-google-play')[0],
         _container_whats_on = document.getElementsByClassName('content-whats-on')[0],
         _container_whats_off = document.getElementsByClassName('content-whats-off')[0],
         _img = null;
-        
-        
+
+
         /*if whats on / whats off*/
         if (this.status_whats.toLowerCase() === 'on') {
             _body.className = _body.className + ' whats-on';
