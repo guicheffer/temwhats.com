@@ -1,6 +1,6 @@
 var temwhats = temwhats || {};
 
-var status = 'off'; //`on` or `off`
+var status = 'on'; //`on` or `off`
 
 temwhats.config = {
     status_whats: status,
@@ -21,12 +21,12 @@ temwhats.config = {
             _body.className = _body.className + ' whats-off';
             _container_whats_off.className = _container_whats_off.className + ' showing';
         }
-        
+
         /*download button*/
         if( window.navigator.userAgent.toLowerCase() !== 'app' ){
             _obj_download_gplay.className = _obj_download_gplay.className + ' showing';
         }
-        
+
         /*click img*/
         _img = document.querySelector('.content-status.showing .img');
         _img.addEventListener('click', function(e){
@@ -48,7 +48,7 @@ temwhats.config = {
                 }
             }
         });
-        
+
         console.log('Current status:', this.status_whats);
     }
 };
