@@ -1,6 +1,6 @@
 var temwhats = temwhats || {};
 
-var status = 'off'; //`on` or `off`
+var status = 'on'; //`on` or `off`
 
 temwhats.config = {
     status_whats: status,
